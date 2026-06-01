@@ -23,3 +23,6 @@
 
 ```bash
 poetry install
+## Автор
+
+Varenka
