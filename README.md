@@ -1,28 +1,152 @@
 # Банковские операции
 
-Проект предназначен для обработки банковских операций.
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![Status](https://img.shields.io/badge/status-in%20development-green)
 
-## Возможности
+## Описание проекта
 
-### Маскировка данных
+Проект предназначен для обработки банковских операций клиента.
 
-- get_mask_card_number()
-- get_mask_account()
-- mask_account_card()
+Реализованы функции для:
 
-### Работа с датами
+* маскировки номеров банковских карт и счетов;
+* преобразования дат;
+* фильтрации операций по статусу;
+* сортировки операций по дате.
 
-- get_date()
+## Содержание
 
-### Обработка операций
+* Технологии
+* Начало работы
+* Использование
+* Тестирование
+* To Do
+* Автор
 
-- filter_by_state()
-- sort_by_date()
+## Технологии
 
-## Установка
+В проекте используются:
+
+* Python 3.13
+* Poetry
+* Pytest
+* Flake8
+* Git
+* GitHub
+
+## Начало работы
+
+### Установка проекта
+
+Клонируйте репозиторий:
+
+```bash
+git clone <ссылка_на_репозиторий>
+```
+
+Перейдите в директорию проекта:
+
+```bash
+cd homework
+```
+
+Установите зависимости:
 
 ```bash
 poetry install
+```
+
+## Использование
+
+### Маскировка номера карты
+
+```python
+from src.masks import get_mask_card_number
+
+print(get_mask_card_number("7000792289606361"))
+```
+
+Результат:
+
+```text
+7000 79** **** 6361
+```
+
+### Маскировка номера счета
+
+```python
+from src.masks import get_mask_account
+
+print(get_mask_account("73654108430135874305"))
+```
+
+Результат:
+
+```text
+**4305
+```
+
+### Работа с датой
+
+```python
+from src.widget import get_date
+
+print(get_date("2024-03-11T02:26:18.671407"))
+```
+
+Результат:
+
+```text
+11.03.2024
+```
+
+### Фильтрация операций
+
+```python
+from src.processing import filter_by_state
+
+operations = [
+    {"id": 1, "state": "EXECUTED"},
+    {"id": 2, "state": "CANCELED"}
+]
+
+print(filter_by_state(operations))
+```
+
+### Сортировка операций
+
+```python
+from src.processing import sort_by_date
+
+operations = [
+    {"id": 1, "date": "2019-07-03T18:35:29.512364"},
+    {"id": 2, "date": "2018-06-30T02:08:58.425572"}
+]
+
+print(sort_by_date(operations))
+```
+
+## Тестирование
+
+Для запуска тестов используйте:
+
+```bash
+pytest
+```
+
+Для проверки кода линтером:
+
+```bash
+flake8
+```
+
+## To Do
+
+* Добавить новые функции обработки банковских операций.
+* Расширить покрытие тестами.
+* Добавить автоматическую проверку кода.
+
 ## Автор
 
 Varenka
+
