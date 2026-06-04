@@ -6,7 +6,11 @@ def filter_by_state(
     state: str = "EXECUTED"
 ) -> list[dict[str, Any]]:
     """
-    Фильтрует список операций по статусу.
+    Фильтрует список операций по указанному статусу.
+
+    :param operations: список операций
+    :param state: статус операции
+    :return: отфильтрованный список операций
     """
 
     return [
@@ -18,14 +22,19 @@ def filter_by_state(
 
 def sort_by_date(
     operations: list[dict[str, Any]],
-    reverse: bool = True
+    ascending: bool = True
 ) -> list[dict[str, Any]]:
     """
-    Сортирует операции по дате.
+    Сортирует список операций по дате.
+
+    :param operations: список операций
+    :param ascending: порядок сортировки
+    :return: отсортированный список операций
     """
 
     return sorted(
         operations,
         key=lambda operation: operation["date"],
-        reverse=reverse,
+        reverse=not ascending,
     )
+
