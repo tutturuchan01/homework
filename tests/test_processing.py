@@ -18,3 +18,4 @@ def test_sort_by_date_reverse(operations):
     )
 
     assert result[0]["date"] > result[1]["date"]
+
