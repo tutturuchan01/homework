@@ -125,6 +125,34 @@ operations = [
 
 print(sort_by_date(operations))
 ```
+## Модуль generators
+
+Добавлен модуль `generators`, содержащий генераторы для работы с транзакциями.
+
+### Фильтрация по валюте
+
+```python
+from src.generators import filter_by_currency
+
+for tx in filter_by_currency(transactions, "USD"):
+    print(tx)
+```
+
+### Описания транзакций
+```python
+from src.generators import transaction_descriptions
+
+for desc in transaction_descriptions(transactions):
+    print(desc)
+```
+
+### Генератор номеров карт
+```python
+from src.generators import card_number_generator
+
+for card in card_number_generator(1, 3):
+    print(card)
+```
 
 ## Тестирование
 
