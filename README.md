@@ -125,6 +125,80 @@ operations = [
 
 print(sort_by_date(operations))
 ```
+## Модуль generators
+
+Добавлен модуль `generators`, содержащий генераторы для работы с транзакциями.
+
+### Фильтрация по валюте
+
+```python
+from src.generators import filter_by_currency
+
+for tx in filter_by_currency(transactions, "USD"):
+    print(tx)
+```
+
+### Описания транзакций
+```python
+from src.generators import transaction_descriptions
+
+for desc in transaction_descriptions(transactions):
+    print(desc)
+```
+
+### Генератор номеров карт
+```python
+from src.generators import card_number_generator
+
+for card in card_number_generator(1, 3):
+    print(card)
+```
+
+
+## Модуль decorators
+
+Добавлен модуль `decorators`, содержащий декоратор для логирования работы функций.
+
+### Логирование в консоль
+
+```python
+from src.decorators import log
+
+
+@log()
+def add(a, b):
+    return a + b
+
+
+add(1, 2)
+```
+
+Результат:
+
+```text
+add ok
+```
+
+### Логирование в файл
+
+```python
+from src.decorators import log
+
+
+@log(filename="mylog.txt")
+def add(a, b):
+    return a + b
+
+
+add(1, 2)
+```
+
+В файл `mylog.txt` будет записано:
+
+```text
+add ok
+```
+
 
 ## Тестирование
 
@@ -149,4 +223,3 @@ flake8
 ## Автор
 
 Varenka
-
