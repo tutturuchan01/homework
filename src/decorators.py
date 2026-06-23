@@ -1,12 +1,14 @@
+from collections.abc import Callable
 from functools import wraps
+from typing import Any
 
 
-def log(filename=None):
+def log(filename: str | None = None) -> Callable[..., Any]:
     """Декоратор для логирования работы функции."""
 
-    def decorator(func):
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
                 message = f"{func.__name__} ok"
