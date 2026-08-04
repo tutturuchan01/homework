@@ -1,5 +1,6 @@
-from src.widget import mask_account_card, get_date
 import pytest
+
+from src.widget import get_date, mask_account_card
 
 
 def test_get_date():
@@ -11,7 +12,7 @@ def test_get_date():
     [
         ("Visa 1234567812345678", "Visa 1234 56** **** 5678"),
         ("Счет 12345678901234567890", "Счет **7890"),
-    ]
+    ],
 )
 def test_mask_account_card(input_value, expected):
     assert mask_account_card(input_value) == expected
@@ -22,14 +23,10 @@ def test_mask_account_card(input_value, expected):
     [
         ("2024-01-01T00:00:00Z", "01.01.2024"),
         ("2023-12-31T23:59:59Z", "31.12.2023"),
-    ]
+    ],
 )
 def test_get_date_param(input_date, expected):
     assert get_date(input_date) == expected
-
-
-import pytest
-from src.widget import mask_account_card
 
 
 def test_mask_account_card_invalid_input():

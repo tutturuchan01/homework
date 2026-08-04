@@ -1,6 +1,10 @@
 import json
 from typing import Any
 
+from src.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 def load_transactions(file_path: str) -> list[dict[str, Any]]:
     """
@@ -15,12 +19,24 @@ def load_transactions(file_path: str) -> list[dict[str, Any]]:
             data = json.load(file)
 
             if isinstance(data, list):
+                logger.info(
+                    f"Файл {file_path} успешно загружен"
+                )
                 return data
 
+            logger.error(
+                f"Файл {file_path} содержит не список"
+            )
             return []
 
-    except (
-        FileNotFoundError,
-        json.JSONDecodeError,
-    ):
+    except FileNotFoundError:
+        logger.error(
+            f"Файл {file_path} не найден"
+        )
+        return []
+
+    except json.JSONDecodeError:
+        logger.error(
+            f"Файл {file_path} содержит некорректный JSON"
+        )
         return []

@@ -10,9 +10,11 @@ operations = [
 def test_filter_by_state():
     assert len(filter_by_state(operations)) == 1
 
+
 def test_sort_by_date():
     result = sort_by_date(operations)
     assert result[0]["date"] < result[1]["date"]
+
 
 def test_sort_by_date_reverse():
     result = sort_by_date(operations, ascending=False)
