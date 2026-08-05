@@ -37,4 +37,3 @@ def sort_by_date(
         key=lambda operation: operation["date"],
         reverse=not ascending,
     )
-

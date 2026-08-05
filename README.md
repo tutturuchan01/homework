@@ -12,7 +12,11 @@
 * маскировки номеров банковских карт и счетов;
 * преобразования дат;
 * фильтрации операций по статусу;
-* сортировки операций по дате.
+* сортировки операций по дате;
+* генерации данных по транзакциям;
+* логирования функций;
+* загрузки транзакций из JSON-файлов;
+* конвертации валют через внешний API.
 
 ## Содержание
 
@@ -197,6 +201,29 @@ add(1, 2)
 
 ```text
 add ok
+```
+
+
+## Модуль utils
+
+### Загрузка транзакций из JSON
+
+```python
+from src.utils import load_transactions
+
+transactions = load_transactions("data/operations.json")
+print(transactions)
+```
+
+## Модуль external_api
+
+### Конвертация валют
+
+```python
+from src.external_api import transaction_amount
+
+amount = transaction_amount(transaction)
+print(amount)
 ```
 
 
