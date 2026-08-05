@@ -20,12 +20,14 @@ def load_transactions(file_path: str) -> list[dict[str, Any]]:
 
             if isinstance(data, list):
                 logger.info(
-                    f"Файл {file_path} успешно загружен"
+                    "Файл %s успешно загружен",
+                    file_path,
                 )
                 return data
 
             logger.error(
-                f"Файл {file_path} содержит не список"
+                "Файл %s содержит не список",
+                file_path,
             )
             return []
 
