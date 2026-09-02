@@ -24,6 +24,9 @@ def transaction_amount(transaction: dict) -> float:
 
     api_key = os.getenv("API_KEY")
 
+    if not api_key:
+        raise ValueError("API_KEY не найден в переменных окружения")
+
     url = (
         "https://api.apilayer.com/exchangerates_data/"
         "convert"
