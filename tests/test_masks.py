@@ -7,3 +7,11 @@ def test_get_mask_card_number() -> None:
 
 def test_get_mask_account() -> None:
     assert get_mask_account("73654108430135874305") == "**4305"
+
+
+def test_get_mask_card_number_empty() -> None:
+    assert get_mask_card_number("") == ""
+
+
+def test_get_mask_account_empty() -> None:
+    assert get_mask_account("") == ""
